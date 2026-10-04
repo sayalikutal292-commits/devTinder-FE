@@ -8,6 +8,7 @@ import { BASE_URL } from "../utils/constants";
 const Login = () => {
   const [emailId, setEmailId] = useState("user1@gmail.com");
   const [password, setPassword] = useState("marcosR@29");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogin = async () => {
@@ -30,6 +31,7 @@ const Login = () => {
           }
         });
     } catch (error) {
+      setError("Error: Invalid Credentials");
       console.log(error);
     }
   };
@@ -55,7 +57,7 @@ const Login = () => {
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-
+        <p className="text-red-600">{error}</p>
         <button className="btn btn-primary mt-4" onClick={handleLogin}>
           Login
         </button>
