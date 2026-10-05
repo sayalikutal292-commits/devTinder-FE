@@ -1,6 +1,5 @@
-const UserCard = (feed) => {
-  console.log(feed.person.users);
-  const { firstName, lastName } = feed.person.users[0];
+const UserCard = ({ person }) => {
+  const { firstName, lastName, about, age, gender, skills } = person;
   return (
     <div className="card bg-base-100 w-96 shadow-sm">
       <figure>
@@ -11,10 +10,9 @@ const UserCard = (feed) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title">{firstName + " " + lastName}</h2>
-        {/* <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
-        </p> */}
+        {age && gender && <p>{age + "," + gender}</p>}
+        {about && <p>{about}</p>}
+        {skills && <p>{"Skills : " + skills}</p>}
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Interested</button>
           <button className="btn btn-soft">Ignored</button>

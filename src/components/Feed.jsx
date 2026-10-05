@@ -28,7 +28,13 @@ const Feed = () => {
 
   return (
     <div className="my-10 mx-auto flex justify-center">
-      <UserCard person={feed}></UserCard>
+      {feed ? (
+        <UserCard person={feed.users[0]}></UserCard>
+      ) : (
+        <div className=" flex justify-center mt-10">
+          <h2>No Feed Found!!!</h2>
+        </div>
+      )}
     </div>
   );
 };
